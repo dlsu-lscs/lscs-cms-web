@@ -34,8 +34,9 @@ export default function NavBar() {
         </SheetTrigger>
         <SheetContent side="left" className="bg-slate-950 border-slate-800">
           <div className="grid gap-2 py-6">
-            {menus.map((c) => (
+            {menus.map((c, i) => (
               <Link
+                key={i}
                 href={c.path}
                 className="flex w-full items-center py-2 text-lg font-semibold"
                 prefetch={false}
@@ -62,8 +63,8 @@ export default function NavBar() {
 
       <nav className="hidden lg:flex ml-auto mr-4 bg-slate-950">
         <ul className="grid grid-cols-3 text-center font-medium">
-          {menus.map((c) => (
-            <Link href={c.path} legacyBehavior passHref>
+          {menus.map((c, i) => (
+            <Link href={c.path} legacyBehavior passHref key={i}>
               <li
                 className={
                   pathname === c.path
