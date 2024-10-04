@@ -81,7 +81,7 @@ export default function NavBar() {
       <img
         src="https://static-00.iconduck.com/assets.00/profile-default-icon-2048x2045-u3j7s5nj.png"
         alt=""
-        className="w-8 ml-4"
+        className="w-8 lg:ml-0 ml-auto"
       />
     </header>
   );
