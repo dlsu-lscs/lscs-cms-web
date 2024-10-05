@@ -14,7 +14,7 @@ export default function NavBar() {
   const pathname = usePathname();
 
   const menus = [
-    { title: "Post", path: "/" },
+    { title: "Posts", path: "/posts" },
     { title: "Comments", path: "/comments" },
     { title: "Users", path: "/users" },
   ];
