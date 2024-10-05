@@ -6,6 +6,39 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.ce-header {
+  border-bottom: 1px solid #e8e8eb;
+  line-height: 50px;
+  display: flex;
+  padding-bottom: 6px 6px 6px 24px;
+  margin-bottom: 1rem;
+  font-size: large;
+  flex-wrap: wrap;
+}
+
+.cdx-notify {
+  color: black;
+}
+
+@media (min-width: 768px) {
+  .md\:px-12 {
+    .ce-header {
+      border-bottom: 1px solid #1d283a;
+      padding-bottom: 6px 6px 6px 24px;
+      margin-bottom: 1rem;
+      line-height: 50px;
+      display: flex;
+      font-size: xx-large;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.ce-block__content,
+.ce-toolbar__content {
+  max-width: 100%;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
