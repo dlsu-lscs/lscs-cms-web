@@ -7,12 +7,13 @@ let Editor = dynamic(() => import("./Editor"), {
   ssr: false,
 });
 
-export default function CreateNewBlog({}) {
+export default function CreateNewBlog({ data }) {
   const [content, setContent] = useState(null);
+  console.log(data);
 
   return (
     <Editor
-      data={content}
+      data={content || data}
       onChange={(e) => setContent(e)}
       holder="editor_create"
     />

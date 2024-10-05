@@ -3,16 +3,17 @@
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import sample_data from "@/components/sample_data";
-import CreateNewBlog from "./CreateBlog";
+import CreateNewBlog from "../CreateBlog";
 
 export default function CreateNew() {
-  const CreateNewBlog = dynamic(() => import("./CreateBlog"), { ssr: false });
+  const CreateNewBlog = dynamic(() => import("../CreateBlog"), { ssr: false });
+
   return (
-    <main className="grid p-6 grid-cols-2">
-      <div className="">
-        <CreateNewBlog />
+    <main className="flex pt-6 px-16 flex-wrap">
+      <div className="col-span-2 md:w-4/5 md:px-12">
+        <CreateNewBlog data={sample_data[0].data} />
       </div>
-      <div>HIIIIIIIIIIII</div>
+      <div className="2fr">HIIIIIIIIIIII</div>
     </main>
   );
 }
