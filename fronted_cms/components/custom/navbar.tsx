@@ -7,8 +7,6 @@ import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { MountainIcon } from "lucide-react";
-import { X } from "lucide-react";
 
 export default function NavBar() {
   const pathname = usePathname();

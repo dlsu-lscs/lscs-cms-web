@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  height: 100%;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -12,7 +16,7 @@ body {
   display: flex;
   padding-bottom: 6px 6px 6px 24px;
   margin-bottom: 1rem;
-  font-size: large;
+  font-size: x-large;
   flex-wrap: wrap;
 }
 
@@ -21,16 +25,14 @@ body {
 }
 
 @media (min-width: 768px) {
-  .md\:px-12 {
-    .ce-header {
-      border-bottom: 1px solid #1d283a;
-      padding-bottom: 6px 6px 6px 24px;
-      margin-bottom: 1rem;
-      line-height: 50px;
-      display: flex;
-      font-size: xx-large;
-      flex-wrap: wrap;
-    }
+  .ce-header {
+    border-bottom: 1px solid #1d283a;
+    padding-bottom: 6px 6px 6px 24px;
+    margin-bottom: 1rem;
+    line-height: 50px;
+    display: flex;
+    font-size: xx-large;
+    flex-wrap: wrap;
   }
 }
 
