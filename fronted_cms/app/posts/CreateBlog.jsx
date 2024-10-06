@@ -9,7 +9,7 @@ let Editor = dynamic(() => import("./Editor"), {
 
 export default function CreateNewBlog({ data }) {
   const [content, setContent] = useState(null);
-
+  console.log(content);
   return (
     <Editor
       data={content || data}

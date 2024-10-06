@@ -15,7 +15,7 @@ body {
   line-height: 50px;
   display: flex;
   padding: 6px 6px 24px 6px !important;
-  margin-bottom: 1rem !important;
+
   font-size: x-large;
   flex-wrap: wrap;
 }
@@ -24,11 +24,15 @@ body {
   color: black;
 }
 
+.tc-popover {
+  color: black;
+}
+
 @media (min-width: 768px) {
   .ce-header {
     border-bottom: 1px solid #1d283a;
     padding: 6px 6px 24px 6px !important;
-    margin-bottom: 1rem !important;
+
     line-height: 50px;
     display: flex;
     font-size: xx-large;
