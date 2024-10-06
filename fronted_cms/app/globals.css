@@ -14,8 +14,8 @@ body {
   border-bottom: 1px solid #e8e8eb;
   line-height: 50px;
   display: flex;
-  padding-bottom: 6px 6px 6px 24px;
-  margin-bottom: 1rem;
+  padding: 6px 6px 24px 6px !important;
+  margin-bottom: 1rem !important;
   font-size: x-large;
   flex-wrap: wrap;
 }
@@ -27,8 +27,8 @@ body {
 @media (min-width: 768px) {
   .ce-header {
     border-bottom: 1px solid #1d283a;
-    padding-bottom: 6px 6px 6px 24px;
-    margin-bottom: 1rem;
+    padding: 6px 6px 24px 6px !important;
+    margin-bottom: 1rem !important;
     line-height: 50px;
     display: flex;
     font-size: xx-large;
