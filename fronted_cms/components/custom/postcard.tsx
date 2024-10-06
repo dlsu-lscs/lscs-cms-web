@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SquarePen } from "lucide-react";
 interface PostCardProps {
   title: string;
   authors: string[];
@@ -35,12 +36,13 @@ export default function PostCard({
           <p
             className={
               commentsAmt > 0
-                ? "text-sm text-slate-400 border-r-2 border-slate-900 px-4"
+                ? "text-sm text-slate-400 border-x-2 border-slate-900 px-4"
                 : "hidden"
             }
           >
             {commentsAmt} comments
           </p>
+          <SquarePen className="ml-4 h-5"></SquarePen>
         </div>
       </div>
     </Link>
