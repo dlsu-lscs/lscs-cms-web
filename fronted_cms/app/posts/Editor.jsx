@@ -11,9 +11,7 @@ import InlineCode from "@editorjs/inline-code";
 import List from "@editorjs/list";
 import Quote from "@editorjs/quote";
 import Table from "@editorjs/table";
-// import Paragraph from "@editorjs/paragraph";
 import Header from "@editorjs/header";
-import Link from "@editorjs/link";
 
 const EDITOR_TOOLS = {
   code: Code,
@@ -27,11 +25,6 @@ const EDITOR_TOOLS = {
       defaultLevel: 2,
     },
   },
-  // paragraph: {
-  //   class: Paragraph,
-  //   // shortcut: 'CMD+P',
-  //   inlineToolbar: true,
-  // },
   checklist: CheckList,
   inlineCode: InlineCode,
   table: Table,
