@@ -8,7 +8,7 @@ import { Button } from "../ui/button";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 
-export default function NavBar() {
+export default function NavBarHome() {
   const pathname = usePathname();
 
   const menus = [
