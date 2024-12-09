@@ -55,7 +55,7 @@ function Editor({ data, onChange, holder }) {
         data: data,
         async onChange(api, event) {
           const content = await api.saver.save();
-          // console.log(content, "sdfb");
+          console.log(content);
           onChange(content);
         },
       });

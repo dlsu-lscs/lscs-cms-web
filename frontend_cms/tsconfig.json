@@ -26,11 +26,11 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/posts/Editor.jsx",
-    "app/posts/CreateBlog.jsx",
-    "app/posts/[id]/page.jsx",
-    "app/posts/CreateBlog.jsx",
-    "app/posts/CreateBlog.jsx"
+    "app/(home)/posts/Editor.jsx",
+    "app/(home)/posts/CreateBlog.jsx",
+    "app/(home)/posts/[id]/page.jsx",
+    "app/(home)/posts/CreateBlog.jsx",
+    "app/(home)/posts/CreateBlog.jsx"
   ],
   "exclude": ["node_modules"]
 }

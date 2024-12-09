@@ -1,11 +1,4 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "CMS",
-  description: "LSCS CMS Website",
-};
+import NavBarAuth from "@/components/custom/navBarAuth";
 
 export default function RootLayout({
   children,
@@ -15,6 +8,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black text-white h-full flex flex-col">
+        <NavBarAuth></NavBarAuth>
         {children}
       </body>
     </html>
