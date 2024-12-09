@@ -17,37 +17,30 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { useCookies } from "react-cookie";
-import { useState } from "react";
-
-const loginSchema = z.object({
+const registerSchema = z.object({
   email: z
     .string()
     .email() // Validates that the string is a valid email format
     .refine((email) => email.endsWith("@dlsu.edu.ph"), {
       message: "Email must end with '@dlsu.edu.ph'",
     }),
-  password: z.string(),
+  password: z.string().min(8, "Password must be at least 8 characters long"),
 });
 
-export const LogInForm = () => {
-  const [, setCurrentUser] = useCookies(["currentUser"]);
-  const [, setCurrentToken] = useCookies(["currentToken"]);
-  const [error, setError] = useState(null);
-
-  const form = useForm<z.infer<typeof loginSchema>>({
-    resolver: zodResolver(loginSchema),
+export const RegisterForm = () => {
+  const form = useForm<z.infer<typeof registerSchema>>({
+    resolver: zodResolver(registerSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof loginSchema>) => {
+  const onSubmit = (values: z.infer<typeof registerSchema>) => {
     const postData = async () => {
       try {
         const response = await axios.post(
-          "https://lscs.info/auth/login",
+          "https://lscs.info/auth/register",
           { email: values.email, password: values.password },
           {
             headers: {
@@ -55,22 +48,12 @@ export const LogInForm = () => {
             },
           }
         );
+        console.log(response.data);
         if (response.data.status == "success") {
-          window.location.replace("/posts");
+          window.location.replace("/login");
         }
-        setCurrentUser("currentUser", response.data.user, { path: "/posts" });
-        console.log(response.data.token);
-        setCurrentToken("currentToken", response.data.token, {
-          path: "/posts",
-        });
-      } catch (e: unknown) {
-        const error =
-          (e as any)?.response?.data?.error ||
-          (e as Error)?.message ||
-          "An unknown error occurred";
-
+      } catch (e) {
         console.log(e);
-        setError(error);
       }
     };
     postData();
@@ -95,10 +78,12 @@ export const LogInForm = () => {
                       <Input
                         placeholder="juan_delacruz@dlsu.edu.ph"
                         {...field}
-                        className="bg-white text-black w-64"
+                        className="text-black bg-white"
                       />
                     </FormControl>
-                    <FormDescription>Input Email</FormDescription>
+                    <FormDescription>
+                      Input DLSU email must include @dlsu.edu.ph
+                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 </>
@@ -119,15 +104,16 @@ export const LogInForm = () => {
                         className="text-black bg-white"
                       />
                     </FormControl>
-                    <FormDescription>Input Password</FormDescription>
+                    <FormDescription>
+                      Password must be at least 8 characters long
+                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 </>
               )}
             />
-            {error ? <p className="text-red-500">{error}</p> : null}
             <Button type="submit" className="bg-[#F8FAFC] text-black">
-              LogIn
+              Register
             </Button>
           </form>
         </Form>
