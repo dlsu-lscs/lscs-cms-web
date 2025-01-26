@@ -128,16 +128,18 @@ export default function Posts() {
           </Select>
         </div>
 
-        {data.map((c) => (
-          <PostCard
-            title={c.title}
-            authors={c.author}
-            category={c.category}
-            commentsAmt={c.comments.length}
-            id={c._id}
-            key={c._id}
-          />
-        ))}
+        {data.map((c) => {
+          return (
+            <PostCard
+              title={c.title}
+              authors={c.author}
+              category={c.category}
+              commentsAmt={c.comments.length}
+              id={c._id}
+              key={c._id}
+            />
+          );
+        })}
       </div>
     </main>
   );

@@ -41,7 +41,7 @@ const EDITOR_TOOLS = {
     },
   },
 };
-function Editor({ data, onChange, holder }) {
+function Editor({ data, onChange, editorBlock }) {
   //add a reference to editor
   const ref = useRef();
   //initialize editorjs
@@ -49,13 +49,13 @@ function Editor({ data, onChange, holder }) {
     //initialize editor if we don't have a reference
     if (!ref.current) {
       const editor = new EditorJS({
-        holder: holder,
+        holder: editorBlock,
         placeholder: "Start writting here..",
         tools: EDITOR_TOOLS,
         data: data,
         async onChange(api, event) {
-          const content = await api.saver.save();
-          onChange(content);
+          const data = await api.saver.save();
+          onChange(data);
         },
       });
       ref.current = editor;
@@ -72,7 +72,7 @@ function Editor({ data, onChange, holder }) {
   return (
     <>
       <div
-        id={holder}
+        id={editorBlock}
         style={{
           width: "100%",
           borderRadius: " 7px",

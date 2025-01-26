@@ -24,30 +24,63 @@ export default function CreateNew({ params }) {
     { value: "technology", label: "Technology" },
   ];
 
-  const authorsList = [
-    { value: "Zel", label: "Zel" },
-    { value: "Xandrei", label: "Xandrei" },
-    { value: "Juan", label: "Juan" },
-    { value: "Pedro", label: "Pedro" },
-  ];
+  const temp = {
+    time: new Date().getTime(),
+    blocks: [
+      {
+        type: "header",
+        data: {
+          text: "Enter Title",
+          level: 1,
+        },
+      },
+    ],
+  };
+
+  const getUsers = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/users`,
+        {
+          withCredentials: true, // Include credentials (cookies)
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.log("Error fetching users", error.response);
+    }
+  };
 
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [content, setContent] = useState(null);
+  const [content, setContent] = useState(temp);
   const [selectAuthors, setSelectedAuthors] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [authorsList, setAuthorsList] = useState([""]);
 
-  function handleChange(e) {
-    setContent(e);
-    console.log(content);
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const users = await getUsers();
+      console.log("user", users);
+      const userList = users.map((o) => {
+        return { value: o._id, label: o.name };
+      });
+      console.log(userList);
+      setAuthorsList(userList);
+    };
+
+    fetchData();
+  }, []);
 
   // Set up the endpoints for the dynamic data
 
   return (
     <main className="flex flex-row pt-6 px-16 md:flex-nowrap flex-wrap pb-14 h-full justify-center">
       <div className="col-span-2 md:basis-4/5 basis-3/4 md:px-12">
-        <Editor data={content} onChange={handleChange} holder="editor_create" />
+        <Editor
+          data={content}
+          onChange={setContent}
+          editorBlock="editor_create"
+        />
       </div>
 
       <div className="bg-gray-950 md:basis-1/5 basis-1/4 rounded-lg border-2 border-slate-800 p-6 flex flex-col">
@@ -94,6 +127,9 @@ export default function CreateNew({ params }) {
         <div className="mt-auto pt-4">
           {" "}
           <Button
+            onClick={() => {
+              console.log(content);
+            }}
             variant="secondary"
             className="text-black font-semibold mt-auto bg-white"
           >

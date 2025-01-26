@@ -31,7 +31,8 @@
     "app/(home)/posts/[id]/page.jsx",
     "app/(home)/posts/CreateBlog.jsx",
     "app/(home)/posts/CreateBlog.jsx",
-    "app/(home)/posts/page.jsx"
+    "app/(home)/posts/page.jsx",
+    "components/custom/postcard.tsx"
   ],
   "exclude": ["node_modules"]
 }

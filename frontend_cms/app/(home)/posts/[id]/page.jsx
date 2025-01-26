@@ -23,12 +23,26 @@ export default function CreateNew({ params }) {
           withCredentials: true, // Include credentials (cookies)
         }
       );
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log("Error fetching post", error.response);
     }
   };
+
+  const getUsers = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/users`,
+        {
+          withCredentials: true, // Include credentials (cookies)
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.log("Error fetching users", error.response);
+    }
+  };
+
   // Temporary values
   const valuesList = [
     { value: "sports", label: "Sports" },
@@ -38,34 +52,30 @@ export default function CreateNew({ params }) {
     { value: "technology", label: "Technology" },
   ];
 
-  const authorsList = [
-    { value: "Zel", label: "Zel" },
-    { value: "Xandrei", label: "Xandrei" },
-    { value: "Juan", label: "Juan" },
-    { value: "Pedro", label: "Pedro" },
-  ];
-
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [content, setContent] = useState(null);
   const [selectAuthors, setSelectedAuthors] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  function handleChange(e) {
-    setContent(e);
-    console.log(content);
-  }
+  const [authorsList, setAuthorsList] = useState([""]);
 
   useEffect(() => {
-    const fetchPost = async () => {
+    const fetchData = async () => {
       await setIsLoading(true);
       const post = await getPost();
-      console.log(post.content);
+      const users = await getUsers();
+      console.log("post", post);
+      console.log("user", users);
       setContent(post.content);
+      const userList = users.map((o) => {
+        return { value: o._id, label: o.name };
+      });
+      console.log(userList);
+      setAuthorsList(userList);
       await setIsLoading(false);
     };
 
-    fetchPost();
+    fetchData();
   }, []);
 
   // Set up the endpoints for the dynamic data
@@ -76,8 +86,8 @@ export default function CreateNew({ params }) {
         {!isLoading && (
           <Editor
             data={content}
-            onChange={handleChange}
-            holder="editor_create"
+            onChange={setContent}
+            editorBlock="editor_create"
           />
         )}
       </div>
@@ -128,6 +138,9 @@ export default function CreateNew({ params }) {
           <Button
             variant="secondary"
             className="text-black font-semibold mt-auto bg-white"
+            onClick={() => {
+              console.log(content);
+            }}
           >
             Save
           </Button>
