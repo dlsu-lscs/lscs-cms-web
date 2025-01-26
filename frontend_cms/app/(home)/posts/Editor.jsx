@@ -36,7 +36,7 @@ const EDITOR_TOOLS = {
     config: {
       endpoints: {
         byFile: "http://localhost:3000/posts", // Your backend file uploader endpoint
-        byUrl: "http://localhost:8008/fetchUrl", // Your endpoint that provides uploading by Url
+        byUrl: "http://localhost:3000/fetchUrl", // Your endpoint that provides uploading by Url
       },
     },
   },
@@ -55,7 +55,6 @@ function Editor({ data, onChange, holder }) {
         data: data,
         async onChange(api, event) {
           const content = await api.saver.save();
-          console.log(content);
           onChange(content);
         },
       });

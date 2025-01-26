@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SquarePen } from "lucide-react";
 interface PostCardProps {
   title: string;
-  authors: string[];
+  authors: { name: string };
   category: string;
   commentsAmt: number;
   id: number;
@@ -22,13 +22,14 @@ export default function PostCard({
         <div className="flex mt-2 items-center">
           <p className="text-sm text-slate-700  pr-4">
             Authors:{" "}
-            {authors.map((a, i) => {
+            {/* {authors.map((a, i) => {
               if (i + 1 === authors.length) {
                 return a;
               } else {
                 return a + ", ";
               }
-            })}
+            })} */}
+            {authors.name}
           </p>
           <p className="text-sm text-slate-400 border-x-2 border-slate-900 px-4">
             {category}

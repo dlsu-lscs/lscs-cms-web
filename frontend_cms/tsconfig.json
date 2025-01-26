@@ -30,7 +30,8 @@
     "app/(home)/posts/CreateBlog.jsx",
     "app/(home)/posts/[id]/page.jsx",
     "app/(home)/posts/CreateBlog.jsx",
-    "app/(home)/posts/CreateBlog.jsx"
+    "app/(home)/posts/CreateBlog.jsx",
+    "app/(home)/posts/page.jsx"
   ],
   "exclude": ["node_modules"]
 }

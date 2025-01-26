@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { useState } from "react";
+import ProfileButton from "@/components/custom/ProfileButton";
 
 export default function NavBarHome() {
   const pathname = usePathname();
@@ -16,6 +18,11 @@ export default function NavBarHome() {
     { title: "Comments", path: "/comments" },
     { title: "Users", path: "/users" },
   ];
+
+  const [isButtonVisible, setIsButtonVisible] = useState(false);
+  const toggleButton = () => {
+    setIsButtonVisible(!isButtonVisible);
+  };
 
   return (
     <header className="flex px-8 py-4 items-center w-full">
@@ -73,15 +80,10 @@ export default function NavBarHome() {
                 {c.title}
               </li>
             </Link>
-          ))}
+          ))}{" "}
         </ul>
       </nav>
-
-      <img
-        src="https://static-00.iconduck.com/assets.00/profile-default-icon-2048x2045-u3j7s5nj.png"
-        alt=""
-        className="w-8 lg:ml-0 ml-auto"
-      />
+      <ProfileButton />
     </header>
   );
 }
